@@ -3,7 +3,7 @@ include("functions/c_main.php");
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         c_register($_POST["username"], $_POST["email"], $_POST["password"]);
         if($c_register_success){
-            echo "success nigger";
+            echo "success!!";
             header("Location: login.php");
         }
         else{
