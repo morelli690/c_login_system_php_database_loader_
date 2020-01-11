@@ -1,5 +1,5 @@
 <?php
-include("functions/c_main.php");
+include("functions/c_main.php"); 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     c_login($_POST["username"], $_POST["password"]);
     if($c_login_success){
@@ -24,11 +24,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
 <form action="" method="post">
-    <label>Usuario</label>
+    <label>User</label>
     <br>
     <input type="text" name="username">
     <br>
-    <label>Senha</label>
+    <label>Pass</label>
     <br>
     <input type="text" name="password">
     <br>
