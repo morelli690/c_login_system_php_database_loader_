@@ -43,6 +43,8 @@ include("functions/c_main.php");
         <br>
         <input type="text" name="password">
         <br>
+		<label>Repeat Pass</label>
+		<br>
         <input type="text" name="repeat_pass">
         <br>
         <button>register</button>
