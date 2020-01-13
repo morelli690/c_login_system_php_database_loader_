@@ -1,15 +1,26 @@
 <?php
 include("functions/c_main.php"); 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    c_login($_POST["username"], $_POST["password"]);
-    if($c_login_success){
-        echo "success bruh";
+    if(c_login($_POST["username"], $_POST["password"])){
         session_start();
         $SESSION["loggedin"] = true;
+
         header("Location: lmfao.php");
     }
+    elseif(c_response::$c_login == "wrong_password") {
+        echo "wrong password"; exit();
+    }
+    elseif(c_response::$c_login == "empty_password"){
+        echo "empty password"; exit();
+    }
+    elseif(c_response::$c_login == "invalid_username"){
+        echo "invalid username"; exit();
+    }
+    elseif(c_response::$c_login == "empty_username"){
+        echo "empty username"; exit();
+    }
     else{
-        "i dunno"; die();
+        echo "unknown error"; exit();
     }
 }
 ?>

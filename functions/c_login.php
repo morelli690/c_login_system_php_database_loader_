@@ -1,11 +1,11 @@
 <?php
 
-include("c_settings.php");
-$c_login_success = false;
+include_once ("c_settings.php");
+include_once ("c_response.php");
 
 function c_login($c_username, $c_password) {
     global $c_con; // ghetto asf(i dont like funcs!)
-    global $c_login_success; // ghetto asf(i dont like funcs!)
+
     if (!empty($c_username)) {
         $c_user_result = "SELECT * FROM c_data WHERE c_username='" . mysqli_real_escape_string($c_con, $c_username) . "'";
         $c_user_check = $c_con->query($c_user_result);
@@ -15,30 +15,28 @@ function c_login($c_username, $c_password) {
                     if(password_verify($c_password, $c_row["c_password"])){
                         $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
                         $c_con->query($c_con, "INSERT into c_data (c_ip) VALUE ('$c_ip')");
-                        $c_login_success = true;
+
+                        c_response::$c_login = "success";
+                        return true;
                     }
                     else{
-                        "wrong password";
-                        $c_login_success = false;
-                        exit();
+                        c_response::$c_login = "wrong_password";
+                        return false;
                     }
                 }
             }
             else{
-                echo "empty password";
-                $c_login_success = false;
-                exit();
+                c_response::$c_login = "empty_password";
+                return false;
             }
         }
         else{
-            echo "invalid username";
-            $c_login_success = false;
-            exit();
+            c_response::$c_login = "invalid_username";
+            return false;
         }
     }
     else{
-        echo "empty username";
-        $c_login_success = false;
-        exit();
+        c_response::$c_login = "empty_username";
+        return false;
     }
 }
