@@ -14,7 +14,7 @@ function c_login($c_username, $c_password) {
                 while ($c_row = $c_user_check->fetch_assoc()) {
                     if(password_verify($c_password, $c_row["c_password"])){
                         $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
-                        $c_con->query($c_con, "INSERT into c_data (c_ip) VALUE ('$c_ip')");
+                        $c_con->query("INSERT into c_data (c_ip) VALUE ('$c_ip')");
 
                         c_response::$c_login = "success";
                         return true;
