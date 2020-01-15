@@ -2,8 +2,7 @@
 include("functions/c_main.php"); 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_login($_POST["username"], $_POST["password"])){
-        session_start();
-        $_SESSION["loggedin"] = true;
+        setcookie("username", $_POST["username"], time()+ 1337,'/');
 
         header("Location: lmfao.php");
     }

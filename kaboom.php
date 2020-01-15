@@ -1,4 +1,6 @@
 <?php
-$_SESSION["loggedin"] = false;
-session_destroy();  //not working for me, no idea why, if you find a fix pls push an update or open an issue
+if (isset($_COOKIE['username'])) {
+    unset($_COOKIE['username']);
+    setcookie('username', null, -1, '/');
+}
 header("Location: login.php"); 

@@ -1,5 +1,5 @@
 <?php
-if($_SESSION["loggedin"] == true)
+if(isset($_COOKIE["username"]))
     echo 'loggedin';
 else
     echo "ur dumb";
