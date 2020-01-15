@@ -3,7 +3,7 @@ include("functions/c_main.php");
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_login($_POST["username"], $_POST["password"])){
         session_start();
-        $SESSION["loggedin"] = true;
+        $_SESSION["loggedin"] = true;
 
         header("Location: lmfao.php");
     }
