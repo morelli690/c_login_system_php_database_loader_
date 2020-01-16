@@ -6,20 +6,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         header("Location: lmfao.php");
     }
-    elseif(c_response::$c_login == "wrong_password") {
-        echo "wrong password"; exit();
-    }
-    elseif(c_response::$c_login == "empty_password"){
-        echo "empty password"; exit();
-    }
-    elseif(c_response::$c_login == "invalid_username"){
-        echo "invalid username"; exit();
-    }
-    elseif(c_response::$c_login == "empty_username"){
-        echo "empty username"; exit();
-    }
     else{
-        echo "unknown error"; exit();
+        echo c_response::$c_login; exit();
     }
 }
 ?>
@@ -40,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <br>
     <label>Pass</label>
     <br>
-    <input type="text" name="password">
+    <input type="password" name="password">
     <br>
     <button>login</button>
 </form>
