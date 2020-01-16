@@ -9,7 +9,7 @@ function c_activate($c_username, $c_key) {
     if ($key_check->num_rows != 0) {
         while ($c_row = $key_check->fetch_assoc()) {
             if($c_row["c_used"] != 1) {
-                $user_check = $c_con->query("SELECT * FROM c_data WHERE c_username='$c_username'");
+                $user_check = $c_con->query("SELECT * FROM c_data WHERE c_username='".AntiSQLString($c_username)."'");
                 if ($user_check->num_rows != 0) {
                     while ($c_row2 = $user_check->fetch_assoc()) {
                         $expires = $c_row2["c_expires"];
