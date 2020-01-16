@@ -7,9 +7,8 @@ function c_login($c_username, $c_password) {
     global $c_con; // ghetto asf(i dont like funcs!)
 
     if (!empty($c_username)) {
-        $c_user_result = "SELECT * FROM c_data WHERE c_username='" . AntiSQLString($c_username) . "'";
-        $c_user_check = $c_con->query($c_user_result);
-        if (mysqli_num_rows($c_user_check) != 0) {
+        $c_user_check = $c_con->query("SELECT * FROM c_data WHERE c_username='" . AntiSQLString($c_username) . "'");
+        if ($c_user_check->num_rows != 0) {
             if (!empty($c_password)) {
                 while ($c_row = $c_user_check->fetch_assoc()) {
                     if(password_verify($c_password, $c_row["c_password"])){
