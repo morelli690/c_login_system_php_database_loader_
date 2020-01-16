@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/01/2020 às 10:03
--- Versão do servidor: 10.4.10-MariaDB
--- Versão do PHP: 7.3.12
+-- Tempo de geração: 16-Jan-2020 às 08:40
+-- Versão do servidor: 10.4.11-MariaDB
+-- versão do PHP: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `c_data`
+-- Estrutura da tabela `c_data`
 --
 
 CREATE TABLE `c_data` (
@@ -33,28 +33,54 @@ CREATE TABLE `c_data` (
   `c_username` varchar(255) NOT NULL,
   `c_email` varchar(255) NOT NULL,
   `c_password` varchar(255) NOT NULL,
+  `c_expires` varchar(255) NOT NULL,
   `c_ip` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Índices de tabelas apagadas
+-- Estrutura da tabela `c_keys`
+--
+
+CREATE TABLE `c_keys` (
+  `c_id` int(11) NOT NULL,
+  `c_key` varchar(255) NOT NULL,
+  `c_days` int(11) NOT NULL,
+  `c_used` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `c_data`
+-- Índices para tabela `c_data`
 --
 ALTER TABLE `c_data`
   ADD PRIMARY KEY (`c_uid`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- Índices para tabela `c_keys`
+--
+ALTER TABLE `c_keys`
+  ADD PRIMARY KEY (`c_id`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `c_data`
 --
 ALTER TABLE `c_data`
-  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de tabela `c_keys`
+--
+ALTER TABLE `c_keys`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
