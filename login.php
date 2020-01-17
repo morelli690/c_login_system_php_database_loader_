@@ -30,6 +30,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <br>
     <input type="password" name="password">
     <br>
+	<label> dont have an account?<label> <a href="register.php"> click here </a>
+	<br>
     <button>login</button>
 </form>
 </body>
