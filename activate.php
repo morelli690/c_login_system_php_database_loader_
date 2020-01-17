@@ -4,14 +4,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_activate($_POST["username"], $_POST["key"])){
         echo "activated";
     }
-    elseif(c_response::$c_activate == "unexistent_user"){
-        echo "unexistent user"; exit();
-    }
-    elseif(c_response::$c_activate == "already_used_key"){
-        echo "key already used"; exit();
-    }
-    elseif(c_response::$c_activate == "unexistent_key"){
-        echo "unexistent key"; exit();
+    elseif(c_response::$c_activate != ""){
+        echo c_response::$c_activate; exit();
     }
     else{
         echo "unknown error"; exit();

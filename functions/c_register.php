@@ -10,7 +10,7 @@ function c_register($c_username, $c_email, $c_password) {
     if (!empty($c_username) && !empty($c_password) && !empty($c_email)) {
         $c_user_check = $c_con->query("SELECT * FROM c_data WHERE c_username='" . c_security::anti_sql_string($c_username) . "'");
         if (!mysqli_num_rows($c_user_check) > 0) {
-            $c_email_result = $c_con->query("SELECT * FROM c_data WHERE c_email = '" . AntiSQLString($c_email) . "'");
+            $c_email_result = $c_con->query("SELECT * FROM c_data WHERE c_email = '" . c_security::anti_sql_string($c_email) . "'");
             if(filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
                 if (!mysqli_num_rows($c_email_result) > 0) {
                     $c_enc_pass = password_hash($c_password, PASSWORD_BCRYPT);

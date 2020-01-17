@@ -4,7 +4,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_login($_POST["username"], $_POST["password"])){
         setcookie("username", $_POST["username"], time()+ 1337,'/');
 
-        header("Location: lmfao.php");
+        header("Location: dashboard.php");
     }
     else{
         echo c_response::$c_login; exit();
