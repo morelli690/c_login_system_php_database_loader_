@@ -22,7 +22,13 @@ namespace c_handler
             if (c_hwid == "meme") c_hwid = WindowsIdentity.GetCurrent().User.Value;
 
             string result = dec(dec(new WebClient().DownloadString(api + "c_handle.php" + "?m=a&username=" + c_username + "&password=" + c_password + "&hwid=" + c_hwid)));
-            if(result == "empty_username")
+            
+            if(result == "")
+            {
+                MessageBox.Show("empty_response");
+                return false;
+            }
+            else if(result == "empty_username")
             {
                 MessageBox.Show("empty_username");
                 return false;
