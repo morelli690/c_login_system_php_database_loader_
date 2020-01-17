@@ -12,21 +12,16 @@ if(isset($_GET["t"])){
         while($c_row = $res->fetch_assoc()){
             if($c_row["c_expires"] > time()){
                 c_response::$c_api_download = "success";
-                /*
-                here you do whatever you want to do when your session is not expired,
-                if you own and cheat and stuff you should just download it here
-                later i will make an c# class integrating stuff for newbs
-                */
-                echo c_security::encrypt(c_response::$c_api_download); exit();
+                /* here you do whatever you want to do when your session is not expired */
+                require __DIR__ . "\\example.dll"; //dll path
             }
             else{
-                c_response::$c_api_download = "token_expired";
-                echo c_security::encrypt(c_response::$c_api_download); exit();
+                c_response::$c_api_download = "token_expired"; exit();
+                //im fine with no errors lmfao
             }
         }
     }
     else{
-        c_response::$c_api_download = "unexistent_token";
-        echo c_security::encrypt(c_response::$c_api_download); exit();
+        c_response::$c_api_download = "unexistent_token"; exit();
     }
 }

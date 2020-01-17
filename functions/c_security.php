@@ -1,26 +1,7 @@
 <?php
 class c_security{
-    static function encrypt($str, $offset = 12){
-        $encrypted_text = "";
-        $offset = $offset % 26;
-        if ($offset < 0) {
-            $offset += 26;
-        }
-        $i = 0;
-        while ($i < strlen($str)) {
-            $c = strtoupper($str{$i});
-            if (($c >= "A") && ($c <= 'Z')) {
-                if ((ord($c) + $offset) > ord("Z")) {
-                    $encrypted_text .= chr(ord($c) + $offset - 26);
-                } else {
-                    $encrypted_text .= chr(ord($c) + $offset);
-                }
-            } else {
-                $encrypted_text .= " ";
-            }
-            $i++;
-        }
-        return $encrypted_text;
+    static function encrypt($str){
+		return base64_encode(base64_encode($str));
     }
     static function anti_sql_string($string) { //thanks to krawk
         $string = str_replace(array("'", 'Â´', '"', 'SELECT FROM', 'SELECT * FROM', 'ONION', 'union', 'UNION', 'UDPATE users SET', 'WHERE username', 'DROP TABLE', '0x50', 'mid((select', 'union(((((((', 'concat(0x', 'concat(', 'OR boolean', 'or HAVING', "OR '1", '0x3c62723e3c62723e3c62723e', '0x3c696d67207372633d22', '+#1q%0AuNiOn all#qa%0A#%0AsEleCt', 'unhex(hex(Concat(', 'Table_schema,0x3e,', '0x00', '0x08', '0x09', '0x0a', '0x0d', '0x1a', '0x22', '0x25', '0x27', '0x5c', '0x5f',), "", $string);

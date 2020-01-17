@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Jan-2020 às 00:06
+-- Tempo de geração: 17-Jan-2020 às 08:23
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.2.26
 
@@ -93,19 +93,19 @@ ALTER TABLE `c_tokens`
 -- AUTO_INCREMENT de tabela `c_data`
 --
 ALTER TABLE `c_data`
-  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_keys`
 --
 ALTER TABLE `c_keys`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_tokens`
 --
 ALTER TABLE `c_tokens`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
