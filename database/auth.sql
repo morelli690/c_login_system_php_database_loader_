@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17-Jan-2020 às 08:23
+-- Tempo de geração: 25-Jan-2020 às 02:06
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.2.26
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `auth`
+-- Banco de dados: `c_auth`
 --
 
 -- --------------------------------------------------------
@@ -54,6 +54,20 @@ CREATE TABLE `c_keys` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `c_resets`
+--
+
+CREATE TABLE `c_resets` (
+  `c_id` int(11) NOT NULL,
+  `c_token` int(11) NOT NULL,
+  `c_email` varchar(255) NOT NULL,
+  `c_expires` varchar(255) NOT NULL,
+  `c_done` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `c_tokens`
 --
 
@@ -80,6 +94,12 @@ ALTER TABLE `c_keys`
   ADD PRIMARY KEY (`c_id`);
 
 --
+-- Índices para tabela `c_resets`
+--
+ALTER TABLE `c_resets`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Índices para tabela `c_tokens`
 --
 ALTER TABLE `c_tokens`
@@ -93,12 +113,18 @@ ALTER TABLE `c_tokens`
 -- AUTO_INCREMENT de tabela `c_data`
 --
 ALTER TABLE `c_data`
-  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `c_keys`
 --
 ALTER TABLE `c_keys`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `c_resets`
+--
+ALTER TABLE `c_resets`
   MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

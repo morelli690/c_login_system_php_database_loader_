@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "auth";
+$db = "c_auth";
 
 $c_con = mysqli_connect($host, $user, $pass, $db);
 mysqli_query($c_con, "SET NAMES UTF8") or die(mysqli_error($c_con));
