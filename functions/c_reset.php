@@ -12,7 +12,7 @@ function c_change_pass($c_username, $c_old_password, $c_new_password){
 		 		while ($c_row = $c_user_check->fetch_assoc()) {
                     if(password_verify($c_old_password, $c_row["c_password"])) {
                         $c_new_password = password_hash($c_new_password, PASSWORD_BCRYPT);
-                        $c_con->query("UPDATE c_data SET c_password='" . c_security::anti_sql_string($c_new_password) . "'");
+                        $c_con->query("UPDATE c_data SET c_password='" . c_security::anti_sql_string($c_new_password) . "'WHERE c_username='".c_security::anti_sql_string($c_username)."'");
                         c_response::$c_reset = "success";
                         return true;
                     }
