@@ -13,6 +13,8 @@ if(isset($_GET["t"])){
             if($c_row["c_expires"] > time()){
                 c_response::$c_api_download = "success";
                 /* here you do whatever you want to do when your session is not expired */
+                header('Content-Type: application/dll'); //bug fix
+
                 require __DIR__ . "\\example.dll"; //dll path
             }
             else{

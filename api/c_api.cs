@@ -13,7 +13,7 @@ namespace c_handler
     {
         public static string dec(string _) => Encoding.UTF8.GetString(Convert.FromBase64String(_));
 
-        private static string api = "http://localhost/c_login_system/api/";
+        private static string api = "http://localhost/api/";
 
         private static string token { get; set; }
         
@@ -58,10 +58,16 @@ namespace c_handler
                 MessageBox.Show("wrong_hwid");
                 return false;
             }
+            else if(result.Contains("logged_in"))
+            {
+                string[] s = result.Split('|');
+                token = s[1];
+                return true;
+            }
             else
             {
-                token = result;
-                return true;
+                MessageBox.Show("unknown_response");
+                return false;
             }
         }
         public static byte[] c_dll() => new WebClient().DownloadData(api + "c_download.php" + "?t=" + token);

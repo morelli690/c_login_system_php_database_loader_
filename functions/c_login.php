@@ -61,7 +61,7 @@ function c_api_login($c_username, $c_password, $c_hwid){
 
                                     $c_con->query("INSERT INTO c_tokens (c_token, c_expires) VALUES ('".c_security::anti_sql_string($token)."', '".c_security::anti_sql_string($time)."')");
 
-                                    c_response::$c_api_login = $token; // :D
+                                    c_response::$c_api_login = "logged_in|" . $token; // :D
                                     return true;
                                 } else {
                                     c_response::$c_api_login = "wrong_hwid";
@@ -78,7 +78,7 @@ function c_api_login($c_username, $c_password, $c_hwid){
 
                                 $c_con->query("INSERT INTO c_tokens (c_token, c_expires) VALUES ('".c_security::anti_sql_string($token)."', '".c_security::anti_sql_string($time)."')");
 
-                                c_response::$c_api_login = $token; // :D
+                                c_response::$c_api_login = "logged_in|" . $token; // :D
                                 return true;
                             }
                         }
