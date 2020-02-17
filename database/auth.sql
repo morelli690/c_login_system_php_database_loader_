@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Jan-2020 às 02:06
+-- Tempo de geração: 17/02/2020 às 22:12
 -- Versão do servidor: 10.4.11-MariaDB
--- versão do PHP: 7.2.26
+-- Versão do PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `c_data`
+-- Estrutura para tabela `c_data`
 --
 
 CREATE TABLE `c_data` (
@@ -33,6 +33,7 @@ CREATE TABLE `c_data` (
   `c_username` varchar(255) NOT NULL,
   `c_email` varchar(255) NOT NULL,
   `c_password` varchar(255) NOT NULL,
+  `c_admin` int(11) NOT NULL DEFAULT 0,
   `c_expires` varchar(255) DEFAULT NULL,
   `c_hwid` varchar(255) DEFAULT NULL,
   `c_ip` varchar(255) DEFAULT NULL
@@ -41,7 +42,7 @@ CREATE TABLE `c_data` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `c_keys`
+-- Estrutura para tabela `c_keys`
 --
 
 CREATE TABLE `c_keys` (
@@ -54,7 +55,7 @@ CREATE TABLE `c_keys` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `c_resets`
+-- Estrutura para tabela `c_resets`
 --
 
 CREATE TABLE `c_resets` (
@@ -68,7 +69,7 @@ CREATE TABLE `c_resets` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `c_tokens`
+-- Estrutura para tabela `c_tokens`
 --
 
 CREATE TABLE `c_tokens` (
@@ -78,48 +79,48 @@ CREATE TABLE `c_tokens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tabelas despejadas
+-- Índices de tabelas apagadas
 --
 
 --
--- Índices para tabela `c_data`
+-- Índices de tabela `c_data`
 --
 ALTER TABLE `c_data`
   ADD PRIMARY KEY (`c_uid`);
 
 --
--- Índices para tabela `c_keys`
+-- Índices de tabela `c_keys`
 --
 ALTER TABLE `c_keys`
   ADD PRIMARY KEY (`c_id`);
 
 --
--- Índices para tabela `c_resets`
+-- Índices de tabela `c_resets`
 --
 ALTER TABLE `c_resets`
   ADD PRIMARY KEY (`c_id`);
 
 --
--- Índices para tabela `c_tokens`
+-- Índices de tabela `c_tokens`
 --
 ALTER TABLE `c_tokens`
   ADD PRIMARY KEY (`c_id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `c_data`
 --
 ALTER TABLE `c_data`
-  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_keys`
 --
 ALTER TABLE `c_keys`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_resets`
@@ -131,7 +132,7 @@ ALTER TABLE `c_resets`
 -- AUTO_INCREMENT de tabela `c_tokens`
 --
 ALTER TABLE `c_tokens`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
