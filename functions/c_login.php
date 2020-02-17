@@ -13,8 +13,7 @@ function c_login($c_username, $c_password) {
             if (!empty($c_password)) {
                 while ($c_row = $c_user_check->fetch_assoc()) {
                     if(password_verify($c_password, $c_row["c_password"])){
-                        $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
-                        $c_con->query("UPDATE c_data SET c_ip='".c_security::anti_sql_string($c_ip)."' WHERE c_username='".c_security::anti_sql_string($c_username)."'");
+                        $c_con->query("UPDATE c_data SET c_ip='".c_security::anti_sql_string(c_security::get_ip())."' WHERE c_username='".c_security::anti_sql_string($c_username)."'");
 
                         c_response::$c_login = "success";
                         return true;

@@ -1,12 +1,12 @@
 <?php
+session_start();
 include("functions/c_main.php");
-if(isset($_COOKIE["username"])){ ?>
-    loggedin
+if(isset($_SESSION["username"]) && isset($_SESSION["access"]) && $_SESSION["access"] == md5(c_security::openssl_crypto(c_security::get_ip()))){ ?>
+    hello <?php echo c_security::openssl_decrypto($_SESSION["username"]); ?>
 	if you wanna log out
 	<a href=kaboom.php>click here </a>
-	<br>
-    <br>
-	wanna change pass? :
+	<br><br>
+	want to change your pass? :
 	<form action="" method="post">
     	<label>Old Pass</label>
     	<br>

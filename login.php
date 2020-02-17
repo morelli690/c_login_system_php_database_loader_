@@ -1,13 +1,15 @@
 <?php
+session_start();
 include("functions/c_main.php"); 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_login($_POST["username"], $_POST["password"])){
-        setcookie("username", $_POST["username"], time()+ 1337,'/');
+        $_SESSION["username"] = c_security::openssl_crypto($_POST["username"]);
+        $_SESSION["access"] = md5(c_security::openssl_crypto(c_security::get_ip()));
 
         header("Location: dashboard.php");
     }
     else{
-        echo c_response::$c_login; exit();
+        echo c_response::$c_login;
     }
 }
 ?>

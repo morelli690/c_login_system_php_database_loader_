@@ -1,6 +1,4 @@
 <?php
-if (isset($_COOKIE['username'])) {
-    unset($_COOKIE['username']);
-    setcookie('username', null, -1, '/');
-}
+session_start();
+session_destroy();
 header("Location: login.php"); 

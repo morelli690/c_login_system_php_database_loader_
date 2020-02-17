@@ -14,7 +14,7 @@ class c_security{
         $string = strip_tags($string);
         return $string;
     }
-    static function random_string($length = 10) {
+    static function random_string($length = 10) { //no idea
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -23,7 +23,7 @@ class c_security{
         }
         return $randomString;
     }
-    static function caesar($str, $n) {
+    static function caesar($str, $n) { // some website
         $ret = "";
         for($i = 0, $l = strlen($str); $i < $l; ++$i) {
             $c = ord($str[$i]);
@@ -36,5 +36,32 @@ class c_security{
             }
         }
         return $ret;
+    }
+    static function get_ip() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }
+        else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else if (!empty($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $ip = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        }
+        else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+
+    static function decaesar($str, $n) { //logic
+        return c_security::caesar($str, 26 - $n);
+    }
+
+    static function openssl_crypto($string, $key = "predefined_key", $iv = "predefined_iv"){
+        return openssl_encrypt($string, "AES-256-CFB", md5($key), 0, substr(md5($iv), OPENSSL_ZERO_PADDING, 16));
+    }
+
+    static function openssl_decrypto($string, $key = "predefined_key", $iv = "predefined_iv"){
+        return openssl_decrypt($string, "AES-256-CFB", md5($key), 0, substr(md5($iv), OPENSSL_ZERO_PADDING, 16));
     }
 }

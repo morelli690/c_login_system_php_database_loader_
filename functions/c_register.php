@@ -14,9 +14,9 @@ function c_register($c_username, $c_email, $c_password) {
             if(filter_var($c_email, FILTER_VALIDATE_EMAIL)) {
                 if (!mysqli_num_rows($c_email_result) > 0) {
                     $c_enc_pass = password_hash($c_password, PASSWORD_BCRYPT);
-                    $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
+
                     $c_con->query("INSERT INTO c_data (c_username, c_email, c_password, c_ip) 
-  			  VALUES ('" . c_security::anti_sql_string($c_username) . "', '" . c_security::anti_sql_string($c_email) . "', '" . c_security::anti_sql_string($c_enc_pass) . "', '" . c_security::anti_sql_string($c_ip) . "')");
+  			  VALUES ('" . c_security::anti_sql_string($c_username) . "', '" . c_security::anti_sql_string($c_email) . "', '" . c_security::anti_sql_string($c_enc_pass) . "', '" . c_security::anti_sql_string(c_security::get_ip()) . "')");
 
 
                     c_response::$c_register = "success";
