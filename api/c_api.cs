@@ -21,7 +21,7 @@ namespace c_handler
         {
             if (c_hwid == "meme") c_hwid = WindowsIdentity.GetCurrent().User.Value;
 
-            string result = dec(dec(new WebClient().DownloadString(api + "c_handle.php" + "?m=a&username=" + c_username + "&password=" + c_password + "&hwid=" + c_hwid)));
+            string result = dec(c_aesar.decipher(dec(new WebClient().DownloadString(api + "c_handle.php" + "?m=a&username=" + c_username + "&password=" + c_password + "&hwid=" + c_hwid)), 8));
             
             if(result == "")
             {
@@ -71,5 +71,25 @@ namespace c_handler
             }
         }
         public static byte[] c_dll() => new WebClient().DownloadData(api + "c_download.php" + "?t=" + token);
+    }
+    class c_aesar
+    {
+        public static char cipher(char ch, int key) {
+            if (!char.IsLetter(ch))
+                return ch;
+            
+            char d = char.IsUpper(ch) ? 'A' : 'a';
+            return (char)((((ch + key) - d) % 26) + d);
+        }
+
+        public static string encipher(string input, int key) {
+            string output = string.Empty;
+
+            foreach (char ch in input)
+                output += cipher(ch, key);
+
+            return output;
+        }
+        public static string decipher(string input, int key) => encipher(input, 26 - key);
     }
 }
