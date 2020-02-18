@@ -19,11 +19,15 @@ if(isset($_SESSION["username"]) && isset($_SESSION["access"]) && $_SESSION["acce
 else{
     header("Location: ..\login.php"); exit();
 }
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    for ($value = 0; $value < $_POST["tokenammount"]; $value++) {
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tokens"])) {
+    for ($value = 0; $value < $_POST["tokensammount"]; $value++) {
         $c_con->query("INSERT INTO c_keys(c_key, c_days, c_used) VALUES ('".strtoupper(c_security::random_string(22))."', '".c_security::anti_sql_string($_POST["daysammount"])."', '0')");
         header("Refresh:0");
     }
+}
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hwidreset"])){
+    $c_con->query("UPDATE c_data SET c_hwid=NULL WHERE c_username='".c_security::anti_sql_string($_POST["resetuser"])."'");
+    header("Refresh:0");
 }
 ?>
 <!DOCTYPE html>
@@ -38,12 +42,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <form action="" method="post">
     hello admin, to gen tokens complete this form : <br>
     <label>Tokens Ammount :</label>
-    <input type="text" name="tokenammount">
-    <br>
-    <label>Days Ammount</label>
-    <input type="text" name="daysammount">
-    <br>
-    <button>gen</button>
+    <input type="text" name="tokensammount"> <br>
+    <label>Days Ammount :</label>
+    <input type="text" name="daysammount"> <br>
+    <button name="tokens">gen</button>
+</form>
+<br>
+<form action="" method="post">
+    to hwid reset an user you do <br>
+    <label>Username :</label>
+    <input type="text" name="resetuser"> <br>
+    <button name="hwidreset">reset</button>
 </form>
 
 <br> <br>
