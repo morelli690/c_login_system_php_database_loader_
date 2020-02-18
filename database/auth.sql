@@ -114,13 +114,13 @@ ALTER TABLE `c_tokens`
 -- AUTO_INCREMENT de tabela `c_data`
 --
 ALTER TABLE `c_data`
-  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `c_uid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_keys`
 --
 ALTER TABLE `c_keys`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `c_resets`
@@ -132,7 +132,7 @@ ALTER TABLE `c_resets`
 -- AUTO_INCREMENT de tabela `c_tokens`
 --
 ALTER TABLE `c_tokens`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
