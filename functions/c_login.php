@@ -52,7 +52,7 @@ function c_api_login($c_username, $c_password, $c_hwid){
                         if ($c_row["c_expires"] > time()) { // sub check
                             if (strlen($c_row["c_hwid"]) != 0) {
                                 if ($c_row["c_hwid"] == $c_hwid) {
-                                    $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
+                                    $c_ip = c_security::get_ip(); // ghetto asf(i dont like funcs!)
                                     $c_con->query("UPDATE c_data SET c_ip='".c_security::anti_sql_string($c_ip)."' WHERE c_username='".c_security::anti_sql_string($c_username)."'");
 
                                     $token = c_security::random_string(43); //here i generate an random string and use it as a token
@@ -69,7 +69,7 @@ function c_api_login($c_username, $c_password, $c_hwid){
                             }
                             else{
                                 $c_con->query("UPDATE c_data SET c_hwid='".c_security::anti_sql_string($c_hwid)."' WHERE c_username='".c_security::anti_sql_string($c_username)."'");
-                                $c_ip = file_get_contents("http://api.ipify.org"); // ghetto asf(i dont like funcs!)
+                                $c_ip = c_security::get_ip(); // ghetto asf(i dont like funcs!)
                                 $c_con->query("UPDATE c_data SET c_ip='".c_security::anti_sql_string($c_ip)."' WHERE c_username='".c_security::anti_sql_string($c_username)."'");
 
                                 $token = c_security::random_string(43); //here i generate an random string and use it as a token
