@@ -20,7 +20,7 @@ if(isset($_SESSION["username"]) && isset($_SESSION["access"]) && $_SESSION["acce
 		</form>
 <?php }
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(c_change_pass($_COOKIE["username"], $_POST["old_password"], $_POST["new_password"])){
+    if(c_change_pass(c_security::openssl_decrypto($_SESSION["username"]), $_POST["old_password"], $_POST["new_password"])){
     	echo "well done";
     }
     else{
