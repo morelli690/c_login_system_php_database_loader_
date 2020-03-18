@@ -67,7 +67,7 @@ function c_new_password($c_token, $c_new_password){
 					if($c_email_check->num_rows != 0){
 						$c_hashed_password = password_hash($c_new_password, PASSWORD_BCRYPT);
 						$c_con->query("UPDATE c_data SET c_password='".$c_hashed_password."' WHERE c_email='".$c_email."'"); //shitcode.su
-						$c_con->query("UPDATE c_resets SET c_done='1'");
+						$c_con->query("UPDATE c_resets SET c_done='1' WHERE c_token='".c_security::anti_sql_string($c_token)."'");
 
 						c_response::$c_reset = "success";
 						return true;
