@@ -63,7 +63,7 @@ function c_new_password($c_token, $c_new_password){
 			while($c_row = $c_token_check->fetch_assoc()){
 				if($c_row["c_done"] != 1){
 					$c_email = $c_row["c_email"];
-					$c_email_check = $c_con->query("SELECT * FROM c_data WHERE c_email '".c_security::anti_sql_string($c_email)."'");
+					$c_email_check = $c_con->query("SELECT * FROM c_data WHERE c_email='".c_security::anti_sql_string($c_email)."'");
 					if($c_email_check->num_rows != 0){
 						$c_hashed_password = password_hash($c_new_password, PASSWORD_BCRYPT);
 						$c_con->query("UPDATE c_data SET c_password='".$c_hashed_password."' WHERE c_email='".$c_email."'"); //shitcode.su
