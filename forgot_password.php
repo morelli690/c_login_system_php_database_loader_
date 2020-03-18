@@ -26,7 +26,7 @@ if(isset($_GET["token"])){ ?>
     <input type="text" name="new_password">
     <button>send</button>
     </form>
-<?php} ?>
+<?php } ?>
 
 <!DOCTYPE html>
 <html lang="en">
