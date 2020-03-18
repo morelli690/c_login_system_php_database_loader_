@@ -60,7 +60,7 @@ CREATE TABLE `c_keys` (
 
 CREATE TABLE `c_resets` (
   `c_id` int(11) NOT NULL,
-  `c_token` int(11) NOT NULL,
+  `c_token` varchar(255) NOT NULL,
   `c_email` varchar(255) NOT NULL,
   `c_expires` varchar(255) NOT NULL,
   `c_done` int(11) NOT NULL
