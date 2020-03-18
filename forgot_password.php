@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
     else{
-        if (c_new_password($_GET["token"], $_POST["email"])) {
+        if (c_new_password($_GET["token"], $_POST["new_password"])) {
             echo "well done";
         } else {
             echo c_response::$c_reset;
