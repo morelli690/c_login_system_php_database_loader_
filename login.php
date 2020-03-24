@@ -3,7 +3,7 @@ session_start();
 include("functions/c_main.php"); 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(c_login($_POST["username"], $_POST["password"])){
-        $_SESSION["username"] = c_security::openssl_crypto($_POST["username"]);
+        $_SESSION["username"] = c_security::openssl_crypto(strip_tags($_POST["username"])); //thanks Pured
         $_SESSION["access"] = md5(c_security::openssl_crypto(c_security::get_ip()));
 
         header("Location: dashboard.php");
