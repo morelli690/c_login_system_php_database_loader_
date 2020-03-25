@@ -4,10 +4,10 @@ include ("../functions/c_main.php");
 //this was mostly made for cheetos
 //i was going to do an function, but its not needed and stuff, this should work fine
 
-if(isset($_GET["t"])){
+if(isset($_POST["t"])){
     global $c_con; //who dont love globals :)
 
-    $res = $c_con->query("SELECT * FROM c_tokens WHERE c_token='".c_security::anti_sql_string($_GET["t"])."'");
+    $res = $c_con->query("SELECT * FROM c_tokens WHERE c_token='".c_security::anti_sql_string(c_security::decrypt($_POST["t"]))."'");
     if($res->num_rows != 0){
         while($c_row = $res->fetch_assoc()){
             if($c_row["c_expires"] > time()){
